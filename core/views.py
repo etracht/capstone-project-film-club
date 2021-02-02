@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.contrib.auth import authenticate, login as auth_login
 from .forms import RegisterForm
 
+
 from .models import *
 
 #Landing Screen
@@ -18,9 +19,9 @@ def home(request):
         # Data to return to template
     })
 
-def register(response):
+def signup(response):
     if response.method == "POST":
-        form = RegisterForm(response.POST)
+        form = SignUpForm(response.POST)
         if form.is_valid():
             form.save()
             return redirect("/home")

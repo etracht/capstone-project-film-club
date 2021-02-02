@@ -130,7 +130,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 ##### Authentication stuff
-#SITE_ID = 1
+SITE_ID = 1 # I honestly have no idea what this does but if you remove it the whole site will break
 LOGIN_REDIRECT_URL = '/home' #redirect users on sign in to the home page
 LOGOUT_REDIRECT_URL = '/' #redirect users to landing page when they sign out
 
@@ -139,6 +139,13 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend', 
     'allauth.account.auth_backends.AuthenticationBackend', 
 )
+
+#django-allauth registraion settings 
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+
+#https://github.com/pennersr/django-allauth/blob/master/docs/forms.rst#account_forms
+ACCOUNT_FORMS = {'signup': 'mysite.forms.MyCustomSignupForm'}
 
 
 #Allow us to recive user emails if they sign in with google 
