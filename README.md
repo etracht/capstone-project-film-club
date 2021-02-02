@@ -1,3 +1,10 @@
+# HELPFUL COMMANDS
+# Mac/Linux Bash
+- Activate virtual env | env/bin/source activate
+- Start Dev server | python manage.py runserver
+- Make Migrations | python manage.py makemigrations 
+- Apply Database Migrations | python manage.py migrate
+
 # **FILM CLUB PERSONA**
 
 ![alt text](https://img.freepik.com/free-photo/a-man-in-a-bedroom-at-home-in-front-of-a-laptop-watching-movies-at-night_163305-16739.jpg?size=664&ext=jpg)

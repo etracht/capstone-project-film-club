@@ -14,10 +14,15 @@
 		<h1>Film Club</h1>
 		{% if user.is_authenticated %}
 			<p>Hi {{ user.username }}!</p>
-			<p><a href="{% url 'logout' %}">Log Out</a></p>
+			<p> {{ user.email }}</p>
+			<p><a href="{% url 'account_logout' %}">Log Out</a></p>
+			<p>Your favorite genres are:</p>
+				<p>{{ user.first_genre}}</p>
+				<p>{{ user.second_genre }}</p>
+				<p>{{ user.third_genre}}</p>
 		{% else %}
 			<p>You are not logged in</p>
-			<a href="{% url 'login' %}">Log In</a>
+			<a href="{% url 'account_login' %}">Log In</a>
 	</div>
 {% endif %}
 	

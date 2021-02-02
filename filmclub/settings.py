@@ -39,12 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     "crispy_forms",
-    #'django.contrib.sites', Enable these to add google sign in
-    #'social_app',
-    #'allauth',   
-    #'allauth.account',   
-    #'allauth.socialaccount',   
-    #'allauth.socialaccount.providers.google',  
+    'django.contrib.sites',
+    'allauth',   
+    'allauth.account',   
+    'allauth.socialaccount',   
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',  
 ]
 
 MIDDLEWARE = [
@@ -62,7 +62,9 @@ ROOT_URLCONF = 'filmclub.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ 
+            os.path.normpath(os.path.join(BASE_DIR, 'templates')), 
+        ], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,12 +134,12 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/home' #redirect users on sign in to the home page
 LOGOUT_REDIRECT_URL = '/' #redirect users to landing page when they sign out
 
-#https://whizzoe.medium.com/in-5-mins-set-up-google-login-to-sign-up-users-on-django-e71d5c38f5d5
-#Allow users to sign in with google accounts 
-# AUTHENTICATION_BACKENDS = ( 
-#     'django.contrib.auth.backends.ModelBackend',
-#     'allauth.account.auth_backends.AuthenticationBackend',
-# )
+##https://www.geeksforgeeks.org/python-django-allauth-setup-and-configuration/
+AUTHENTICATION_BACKENDS = ( 
+    'django.contrib.auth.backends.ModelBackend', 
+    'allauth.account.auth_backends.AuthenticationBackend', 
+)
+
 
 #Allow us to recive user emails if they sign in with google 
 # SOCIALACCOUNT_PROVIDERS = {
