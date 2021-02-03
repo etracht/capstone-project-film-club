@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, reverse
 from django.http import JsonResponse
 from django.utils import timezone
 from django.contrib.auth import authenticate, login as auth_login
-from .forms import MyCustomSignupForm
+#from .forms import MyCustomSignupForm
+from .forms import  RegisterForm
 
 
 from .models import *
@@ -21,10 +22,10 @@ def home(request):
 
 def signup(response):
     if response.method == "POST":
-        form = MyCustomSignupForm(response.POST)
+        form = RegisterForm(response.POST)
         if form.is_valid():
             form.save()
             return redirect("/home")
     else:
-        form = MyCustomSignupForm()
+        form = RegisterForm()
     return render(response, "registration/accounts/signup/", {"form":form})

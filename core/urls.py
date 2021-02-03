@@ -22,8 +22,8 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^accounts/', views.signup, include('allauth.urls')), #enable all auth
-    path('', views.index, name = 'index'), #Landing screen
-    path('home/', views.home, name = 'index'), #Home screen
-    #path("register/", views.register, name="register"), #New user signup screen
+    path('', views.index, name='index'), #Landing screen
+    path('home/', views.home, name='home'), #Home screen
+    path("register/", views.signup, name="register"), #New user signup screen
 ]
 

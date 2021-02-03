@@ -1,25 +1,15 @@
 from django import forms
 from django.contrib.auth.models import User
-from allauth.account.forms import SignupForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
-GENRE = (
-    ('HO', 'Horror'),
-    ('CO', 'Comedy'),
-    ('WE', 'Western'),
-    ('RO', 'Romantic'),
-    ('AC', 'Action')
-)
+class RegisterForm(UserCreationForm):
+    email = forms.EmailField()
 
-class MyCustomSignupForm(SignupForm):
-
-	def __init__(self, *args, **kwargs):
-		super(MyCustomSignupForm, self).__init__(*args, **kwargs)
-		self.fields['organization'] = forms.CharField(required=True)
-	
-	def save(self, request):
-		organization = self.cleaned_data.pop('organization')
-		user = super(MyCustomSignupForm, self).save(request)
+class Meta:
+	model = User
+	fields = ["username", "email", "password"]
 
 # class MyCustomSignupForm(SignupForm):
 # 	email = forms.EmailField()
